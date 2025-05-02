@@ -7,6 +7,13 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  output: 'static',
+  build: {
+    outdir: 'dist',
+    assetsDir: 'assets',
+    emptyOutDir: true,
+    sourcemap: true,
+  }
 
   integrations: [react()],
 });
