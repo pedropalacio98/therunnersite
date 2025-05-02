@@ -4,7 +4,7 @@ import react from "@astrojs/react";
 
 export default defineConfig({
   site: "https://pedropalacio98.github.io",
-  base: "/running-store/",
+  base: "/therunnersite/",
   vite: {
     plugins: [tailwindcss()],
   },
