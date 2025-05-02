@@ -1,0 +1,11 @@
+---
+const { title, image, price, link } = Astro.props;
+---
+
+<article style="border: 1px solid #ddd; padding: 1rem; border-radius: 8px;">
+  <a href={link} target="_blank" rel="nofollow noopener">
+    <img src={image} alt={title} width="100%" />
+    <h2>{title}</h2>
+    <p><strong>{price}</strong></p>
+  </a>
+</article>

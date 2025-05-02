@@ -1,0 +1,22 @@
+---
+import type { AstroProps } from 'astro';
+type Props = { slug: string; title: string; image: string; rating: number; price: string; affiliateLink: string; };
+const { title, image, rating, price, affiliateLink, slug }: Props = Astro.props;
+---
+<article class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow p-4">
+  <img src={image} alt={title} class="w-full h-48 object-cover mb-4 rounded-lg" loading="lazy" />
+  <h3 class="text-xl font-heading mb-2">{title}</h3>
+  <div class="flex items-center mb-2">
+    {Array.from({ length: 5 }).map((_, i) => (
+      <svg key={i} class="w-5 h-5 {i < rating ? 'text-yellow-400' : 'text-gray-300'}" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M9.049 2.927c.3-.921 1.603-.921 ..." />
+      </svg>
+    ))}
+    <span class="ml-2 text-gray-600">{rating}/5</span>
+  </div>
+  <p class="text-lg font-semibold mb-4">{price}</p>
+  <a href={affiliateLink} target="_blank" rel="noopener noreferrer"
+     class="block text-center bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600 transition">
+    Comprar en Amazon
+  </a>
+</article>
