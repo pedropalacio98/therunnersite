@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+nav .group:hover > ul {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+}

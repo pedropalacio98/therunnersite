@@ -1,54 +1,73 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Picture } from 'astro:assets';
-import marathonIcon     from '../images/icons/marathon.png';
-import halfMarathonIcon from '../images/icons/halfMarathon.png';
-import tenKIcon         from '../images/icons/10k.png';
-import trailIcon        from '../images/icons/trail.png';
-import categories from '../data/categories.js'
-
+import { categories } from '../data/categories.js';
 ---
-
-<BaseLayout title="Inicio - Mi Running">
-  <section class="relative bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-20 rounded-b-3xl overflow-hidden">
+<BaseLayout title="Inicio – Mi Running">
+  
+<section class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-30 rounded-b-3xl overflow-hidden rounded-t-3xl">
     <div class="container mx-auto px-4 text-center">
-      <h1 class="text-5xl font-extrabold mb-4 drop-shadow-lg">Encuentra tus Zapatillas Ideales</h1>
-      <p class="text-xl mb-8 drop-shadow-sm">Guías, comparativas y enlaces directos para cada distancia y terreno.</p>
-      <a href="#categories" class="inline-block bg-white text-blue-600 font-semibold py-3 px-6 rounded-full hover:bg-gray-100 transition">
-        Explorar Categorías
+      <h1 class="text-5xl font-extrabold mb-4 drop-shadow-lg">
+        Encuentra tus Zapatillas Ideales
+      </h1>
+      <p class="text-xl mb-8 drop-shadow-sm">
+        Guías, comparativas y enlaces directos para cada distancia y terreno.
+      </p>
+      <a
+        href="#seleccion"
+        class="inline-block bg-white text-blue-600 font-semibold py-3 px-6 rounded-full hover:bg-gray-100 transition"
+      >
+        Ver Selección de Carrera
       </a>
     </div>
-
   </section>
 
-  <!-- Categories Grid -->
-  <section id="categories" class="py-16">
+  <section id="seleccion" class="py-16 bg-blue-50 rounded-t-3xl rounded-b-3xl mt-5">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-heading text-center mb-12">Categorías de Zapatillas</h2>
+      <h2 class="text-3xl font-heading text-center mb-12">
+        Selección de Zapatillas para la Carrera
+      </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {categories.map((cat) => (
           <a
             key={cat.slug}
             href={`/${cat.slug}`}
-            class="group block bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1"
+            class="group block bg-white rounded-3xl overflow-hidden shadow-lg transform hover:shadow-2xl hover:-translate-y-2 transition duration-500 ring-2 ring-transparent hover:ring-indigo-300"
           >
             <div class="relative h-48">
               <Picture
-              src={cat.image}
-              alt={cat.name}
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              loading="eager"
+                src={cat.image}
+                alt={cat.name}
+                class="w-full h-full object-cover"
+                loading="eager"
               />
-            </div>
-            <div class="p-6 text-center">
-              <h3 class="text-2xl font-semibold mb-2 group-hover:text-blue-600 transition-colors">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <h3 class="absolute bottom-4 left-4 text-white text-2xl font-bold drop-shadow-lg capitalize">
                 {cat.name}
               </h3>
-              <span class="inline-block mt-2 text-sm text-gray-500">Ver reviews y guías</span>
+            </div>
+            <div class="p-6 text-center">
+              <span class="block text-sm text-gray-500 group-hover:text-gray-700 transition-colors">
+                Ver reviews y guías
+              </span>
             </div>
           </a>
         ))}
       </div>
+    </div>
+  </section>
+
+  <section id="entrenamiento" class="py-16 bg-blue-50 mt-10 rounded-t-3xl rounded-b-3xl">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-heading mb-8">
+        Zapatillas de Entrenamiento
+      </h2>
+      <a
+        href="/entrenamiento"
+        class="inline-block bg-blue-600 text-white font-semibold py-3 px-6 rounded-full hover:bg-blue-700 transition"
+      >
+        Ver Zapatillas de Entrenamiento
+      </a>
     </div>
   </section>
 </BaseLayout>

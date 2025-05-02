@@ -1,6 +1,8 @@
 ---
-const { title } = Astro.props;
+const { title, description = '' } = Astro.props;
 import '../styles/global.css';
+import RunningNavbar from '../components/RunningNavbar.jsx';
+import RunningFooter from '../components/RunningFooter.jsx';
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -8,25 +10,16 @@ import '../styles/global.css';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    {description && <meta name="description" content={description} />}
   </head>
-  <body class="font-sans bg-white text-gray-900">
-    <nav class="bg-white shadow-md">
-      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="/" class="text-2xl font-heading text-blue-600">Mi Running</a>
-        <ul class="flex space-x-6">
-          <li><a href="/" class="hover:text-primary">Inicio</a></li>
-          <li><a href="/reviews" class="hover:text-primary">Reviews</a></li>
-          <li><a href="/about" class="hover:text-primary">Sobre mí</a></li>
-        </ul>
+  <body class="font-sans text-gray-900 flex flex-col min-h-screen">
+    <RunningNavbar client:load />
+    <main class="flex-1">
+      <div class="container mx-auto mt-20 px-6">
+        <slot />
       </div>
-    </nav>
-
-    <main class="container mx-auto px-4 py-8">
-      <slot />
     </main>
 
-    <footer class="bg-gray-100 text-center py-6 mt-12">
-      <p class="text-sm text-gray-600">© 2025 Mi Sitio de Running. Afiliado Amazon.</p>
-    </footer>
+    <RunningFooter client:visible />
   </body>
 </html>
