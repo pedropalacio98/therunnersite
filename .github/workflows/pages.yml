@@ -1,4 +1,4 @@
-name: 📦 Build & Deploy to GitHub Pages
+name: "📦 Build & Deploy to GitHub Pages"
 
 on:
   push:
@@ -29,7 +29,7 @@ jobs:
         run: npm run build # ensure this outputs into `dist/`
 
       - name: Upload Pages artifact
-      uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
